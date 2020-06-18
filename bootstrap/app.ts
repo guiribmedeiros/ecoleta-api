@@ -15,4 +15,4 @@ app.use(routes);
 app.use('/images', express.static(path.resolve(__dirname, '..', 'public', 'images')));
 
 // Binds the application
-app.listen(3000);
+app.listen(8000);
