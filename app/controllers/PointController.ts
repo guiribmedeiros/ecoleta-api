@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import knex from '../../database/knex';
+import config from '../../config/app';
 
 class PointController {
     async index(request: Request, response: Response) {
@@ -23,7 +24,10 @@ class PointController {
                 'points.uf',
             ]);
 
-        return response.json(points);
+        return response.json(points.map(point => ({
+            ...point,
+            image_url: `${config.scheme}://${config.domain}/images/points/${point.image}`,
+        })));
     };
 
     async show(request: Request, response: Response) {
@@ -45,7 +49,10 @@ class PointController {
             ]);
 
         return response.json({
-            point,
+            point: {
+                ...point,
+                image_url: `${config.scheme}://${config.domain}/images/points/${point.image}`,
+            },
             items
         });
     };
@@ -56,7 +63,7 @@ class PointController {
 
         // Insert the point
         const insertedIds = await transaction('points').insert({
-            image: 'https://images.unsplash.com/photo-1543083477-4f785aeafaa9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+            image: request.file.filename,
             name,
             email,
             whatsapp,
@@ -70,10 +77,12 @@ class PointController {
         const point_id = insertedIds[0];
 
         await transaction('item_point').insert(
-            items.map((item_id: Number) => ({
-                item_id,
-                point_id,
-            }))
+            items
+                .split(',')
+                .map((item: string) => ({
+                    item_id: Number(item.trim()),
+                    point_id,
+                }))
         );
 
         await transaction.commit();

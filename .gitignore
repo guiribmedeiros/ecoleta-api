@@ -6,6 +6,10 @@
 # dependencies
 /node_modules
 
+# images
+/public/images/points/*
+!/public/images/points/.gitkeep
+
 # misc
 .DS_Store
 .env

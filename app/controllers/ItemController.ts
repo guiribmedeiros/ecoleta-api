@@ -14,7 +14,7 @@ class ItemController {
         return response.json(items.map(item => ({
             id: item.id,
             title: item.title,
-            image_url: `${config.scheme}://${config.domain}/images/${item.image}`,
+            image_url: `${config.scheme}://${config.domain}/images/items/${item.image}`,
         })));
     }
 }
