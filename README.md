@@ -28,13 +28,13 @@ Then configure your development environment from the `.env.example` file and ins
 npm install
 ```
 
-Once your dependencies are installed, to run all Knex.js migrations and build your application's database schema, execute the `migrate` command:
+Once your dependencies are installed, in order to run all Knex.js migrations and build your application's database schema, execute the `migrate` command:
 
 ```
 npm run migrate
 ```
 
-After building your database your database, you may use the `db:seed` command to seed your database.
+After building your database, you may use the `db:seed` command to seed it.
 
 ```
 npm run db:seed
