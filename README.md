@@ -47,4 +47,4 @@ npm run serve
 ```
 
 That’s it! :rocket:  
-If you have questions about Ecoleta API, you can ask me on [GitHub Issues](https://github.com/guiribmedeiros/ecoleta-api/issues).
+If you have questions about Ecoleta API, you can ask on [GitHub Issues](https://github.com/guiribmedeiros/ecoleta-api/issues).
