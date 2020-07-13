@@ -2,8 +2,9 @@
 [![Cover](./.github/assets/capa.svg)](https://nextlevelweek.com)
 
 <!-- Badges -->
-![100% TypeScript](https://img.shields.io/github/languages/top/guiribmedeiros/ecoleta-api?style=for-the-badge)
+[![100% TypeScript](https://img.shields.io/github/languages/top/guiribmedeiros/ecoleta-api?style=for-the-badge)](https://github.com/guiribmedeiros/ecoleta-api/search?l=typescript)
 [![License](https://img.shields.io/github/license/guiribmedeiros/ecoleta-api?style=for-the-badge)](./LICENSE.md)
+[![Open Issues](https://img.shields.io/github/issues/guiribmedeiros/ecoleta-api?style=for-the-badge)](https://github.com/guiribmedeiros/ecoleta-api/issues)
 
 ## About Ecoleta
 
