@@ -9,10 +9,9 @@ Ecoleta is a marketplace platform that helps people find collection points for r
 
 - Booster [Ecoleta Mobile](https://github.com/guiribmedeiros/ecoleta-mobile).
 - Booster [Ecoleta Web](https://github.com/guiribmedeiros/ecoleta-web).
-- Starter and Booster designs are available at [Figma](https://www.figma.com/file/RdlEdkUng704Q0OyIHjSGi/Ecoleta).
 
 Ecoleta API is an open-sourced restful api. It is written in [TypeScript](http://www.typescriptlang.org) and
-uses [Express](https://expressjs.com/).
+uses [Express](https://expressjs.com/) along with [SQLite](https://www.sqlite.org/).
 
 ## Getting Started
 
