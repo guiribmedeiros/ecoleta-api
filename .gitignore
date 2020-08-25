@@ -6,6 +6,9 @@
 # dependencies
 /node_modules
 
+# production
+/build
+
 # images
 /public/images/points/*
 !/public/images/points/.gitkeep

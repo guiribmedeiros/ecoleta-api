@@ -1,8 +1,10 @@
 import express from 'express';
 import path from 'path';
 import cors from 'cors';
-import routes from '../routes/api';
 import { errors } from 'celebrate';
+
+import routes from '../routes/api';
+import config from '../config/app';
 
 // Creates the application
 const app = express();
@@ -17,4 +19,4 @@ app.use(routes);
 app.use('/images', express.static(path.resolve(__dirname, '..', 'public', 'images')));
 
 // Binds the application
-app.listen(8000);
+app.listen(config.app_port);

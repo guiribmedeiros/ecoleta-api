@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
+
 import knex from '../../database/knex';
-import config from '../../config/app';
+import url from '../utils/url';
 
 class PointController {
     async index(request: Request, response: Response) {
@@ -26,7 +27,7 @@ class PointController {
 
         return response.json(points.map(point => ({
             ...point,
-            image_url: `${config.scheme}://${config.domain}/images/points/${point.image}`,
+            image_url: url(`/images/points/${point.image}`),
         })));
     };
 
@@ -51,7 +52,7 @@ class PointController {
         return response.json({
             point: {
                 ...point,
-                image_url: `${config.scheme}://${config.domain}/images/points/${point.image}`,
+                image_url: url(`/images/points/${point.image}`),
             },
             items
         });
@@ -62,28 +63,31 @@ class PointController {
         const transaction = await knex.transaction();
 
         // Insert the point
-        const insertedIds = await transaction('points').insert({
-            image: request.file.filename,
-            name,
-            email,
-            whatsapp,
-            latitude,
-            longitude,
-            city,
-            uf,
-        });
+        const insertedIds = await transaction('points')
+            .insert({
+                image: request.file.filename,
+                name,
+                email,
+                whatsapp,
+                latitude,
+                longitude,
+                city,
+                uf,
+            })
+            .returning('id');
 
         // Insert the item's point
         const point_id = insertedIds[0];
 
-        await transaction('item_point').insert(
-            items
-                .split(',')
-                .map((item: string) => ({
-                    item_id: Number(item.trim()),
-                    point_id,
-                }))
-        );
+        await transaction('item_point')
+            .insert(
+                items
+                    .split(',')
+                    .map((item: string) => ({
+                        item_id: Number(item.trim()),
+                        point_id,
+                    }))
+            );
 
         await transaction.commit();
 
