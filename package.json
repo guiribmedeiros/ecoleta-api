@@ -3,13 +3,20 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "dev": "npm run development",
-    "development": "node build/bootstrap/app.ts",
-    "serve": "ts-node-dev bootstrap/app.ts --transpile-only --ignore-watch node_modules --respawn",
+    "dev:migrate": "npm run development:migrate",
+    "dev:seed": "npm run development:seed",
+    "dev:migrate:rollback": "npm run development:migrate:rollback",
+    "development": "node build/bootstrap/app.js",
+    "development:migrate": "knex migrate:latest --knexfile build/knexfile.js",
+    "development:migrate:rollback": "knex migrate:rollback --knexfile build/knexfile.js",
+    "development:seed": "knex seed:run --knexfile build/knexfile.js",
     "migrate": "knex migrate:latest --knexfile knexfile.ts",
     "migrate:rollback": "knex migrate:rollback --knexfile knexfile.ts",
-    "db:seed": "knex seed:run --knexfile knexfile.ts",
-    "build": "tsc"
+    "serve": "ts-node-dev bootstrap/app.ts --transpile-only --ignore-watch node_modules --respawn",
+    "seed": "knex seed:run --knexfile knexfile.ts",
+    "start": "npm run dev:migrate && npm run dev:seed && npm run dev"
   },
   "license": "MIT",
   "dependencies": {

@@ -31,10 +31,10 @@ Once your dependencies are installed, in order to run all Knex.js migrations and
 npm run migrate
 ```
 
-After building your database, you may use the `db:seed` command to seed it.
+After building your database, you may use the `seed` command to seed it.
 
 ```
-npm run db:seed
+npm run seed
 ```
 
 Finally, the `serve` script starts your Node.js "development server" on port 8000.
